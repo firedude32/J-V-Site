@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>It's a Date! 💝</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/final.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Animated background hearts -->
+    <div class="hearts-background">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <!-- Main content -->
+    <div class="final-container">
+
+        <!-- Top banner -->
+        <div class="banner">
+            <div class="banner-decoration">🌸 ✨ 🌸</div>
+            <h1 class="pixel-title">It's a date!</h1>
+            <div class="banner-decoration">🌸 ✨ 🌸</div>
+        </div>
+
+        <!-- Main message card -->
+        <div class="message-card">
+            <div class="message-content">
+                <p class="main-message">
+                    Get ready! I'll pick you up on<br>
+                    <strong>February 14th at 7:00 PM</strong><br>
+                    for our Valentine's date at<br>
+                    <strong class="destination">Olive Garden</strong>! 💝
+                </p>
+            </div>
+        </div>
+
+        <!-- Countdown to the date -->
+        <div class="date-countdown">
+            <p class="countdown-label">Time until our date:</p>
+            <div class="countdown-boxes">
+                <div class="countdown-box">
+                    <div class="countdown-number" id="final-days">00</div>
+                    <div class="countdown-text">Days</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="final-hours">00</div>
+                    <div class="countdown-text">Hours</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="final-minutes">00</div>
+                    <div class="countdown-text">Minutes</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="final-seconds">00</div>
+                    <div class="countdown-text">Seconds</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pixel art characters -->
+        <div class="characters">
+            <div class="character-container left">
+                <canvas id="clippy-canvas" width="80" height="100"></canvas>
+                <div class="speech-bubble left-bubble">
+                    Looking forward<br>to it! 💕
+                </div>
+            </div>
+
+            <div class="character-container right">
+                <canvas id="it-guy-canvas" width="80" height="100"></canvas>
+                <div class="speech-bubble right-bubble">
+                    Me too! 🌹
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional: Show her resolution -->
+        <div class="resolution-display" id="resolution-display">
+            <!-- Will be filled by JavaScript if available -->
+        </div>
+
+    </div>
+
+    <script src="js/final.js"></script>
+</body>
+
+</html>

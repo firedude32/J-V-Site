@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CAPTCHA Image Placeholders</title>
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        canvas {
+            border: 2px solid #ccc;
+            cursor: pointer;
+        }
+
+        p {
+            margin: 5px 0;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Right-click each image and "Save Image As" with the exact name shown</h2>
+
+    <div class="section">
+        <h3>Simple CAPTCHA Images (for stage 2)</h3>
+        <div class="grid">
+            <div>
+                <canvas id="traffic1" width="150" height="150"></canvas>
+                <p><strong>traffic-light-1.jpg</strong></p>
+            </div>
+            <div>
+                <canvas id="traffic2" width="150" height="150"></canvas>
+                <p><strong>traffic-light-2.jpg</strong></p>
+            </div>
+            <div>
+                <canvas id="traffic3" width="150" height="150"></canvas>
+                <p><strong>traffic-light-3.jpg</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>YOUR Photos (8 needed) - REPLACE THESE WITH REAL PHOTOS LATER!</h3>
+        <div class="grid">
+            <div><canvas id="you1" width="150" height="150"></canvas>
+                <p><strong>you-1.jpg</strong></p>
+            </div>
+            <div><canvas id="you2" width="150" height="150"></canvas>
+                <p><strong>you-2.jpg</strong></p>
+            </div>
+            <div><canvas id="you3" width="150" height="150"></canvas>
+                <p><strong>you-3.jpg</strong></p>
+            </div>
+            <div><canvas id="you4" width="150" height="150"></canvas>
+                <p><strong>you-4.jpg</strong></p>
+            </div>
+            <div><canvas id="you5" width="150" height="150"></canvas>
+                <p><strong>you-5.jpg</strong></p>
+            </div>
+            <div><canvas id="you6" width="150" height="150"></canvas>
+                <p><strong>you-6.jpg</strong></p>
+            </div>
+            <div><canvas id="you7" width="150" height="150"></canvas>
+                <p><strong>you-7.jpg</strong></p>
+            </div>
+            <div><canvas id="you8" width="150" height="150"></canvas>
+                <p><strong>you-8.jpg</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Decoy Images</h3>
+        <div class="grid">
+            <div><canvas id="bus" width="150" height="150"></canvas>
+                <p><strong>decoy-bus.jpg</strong></p>
+            </div>
+            <div><canvas id="dog" width="150" height="150"></canvas>
+                <p><strong>decoy-dog.jpg</strong></p>
+            </div>
+            <div><canvas id="coffee" width="150" height="150"></canvas>
+                <p><strong>decoy-coffee.jpg</strong></p>
+            </div>
+            <div><canvas id="keyboard" width="150" height="150"></canvas>
+                <p><strong>decoy-keyboard.jpg</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Traffic lights (green for correct, red for wrong)
+        const traffic1 = document.getElementById('traffic1').getContext('2d');
+        traffic1.fillStyle = '#2ecc71';
+        traffic1.fillRect(0, 0, 150, 150);
+        traffic1.fillStyle = 'white';
+        traffic1.font = '14px Arial';
+        traffic1.fillText('TRAFFIC LIGHT', 20, 75);
+        traffic1.fillText('(CORRECT)', 35, 95);
+
+        const traffic2 = document.getElementById('traffic2').getContext('2d');
+        traffic2.fillStyle = '#e74c3c';
+        traffic2.fillRect(0, 0, 150, 150);
+        traffic2.fillStyle = 'white';
+        traffic2.fillText('ROAD', 55, 80);
+
+        const traffic3 = document.getElementById('traffic3').getContext('2d');
+        traffic3.fillStyle = '#e67e22';
+        traffic3.fillRect(0, 0, 150, 150);
+        traffic3.fillStyle = 'white';
+        traffic3.fillText('BUILDING', 45, 80);
+
+        // Your photos (blue placeholders - REPLACE THESE!)
+        ['you1', 'you2', 'you3', 'you4', 'you5', 'you6', 'you7', 'you8'].forEach((id, i) => {
+            const ctx = document.getElementById(id).getContext('2d');
+            ctx.fillStyle = '#3498db';
+            ctx.fillRect(0, 0, 150, 150);
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 40px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('YOU', 75, 65);
+            ctx.font = '20px Arial';
+            ctx.fillText(`Photo ${i + 1}`, 75, 95);
+        });
+
+        // Decoys
+        const decoys = {
+            bus: { color: '#95a5a6', text: 'BUS' },
+            dog: { color: '#f39c12', text: 'DOG' },
+            coffee: { color: '#8e44ad', text: 'COFFEE' },
+            keyboard: { color: '#34495e', text: 'KEYBOARD' }
+        };
+
+        Object.entries(decoys).forEach(([id, data]) => {
+            const ctx = document.getElementById(id).getContext('2d');
+            ctx.fillStyle = data.color;
+            ctx.fillRect(0, 0, 150, 150);
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 20px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(data.text, 75, 80);
+        });
+    </script>
+</body>
+
+</html>

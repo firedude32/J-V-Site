@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Required</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/captcha.css">
+</head>
+
+<body>
+    <!-- Background (blurred character select page) -->
+    <div class="background-blur">
+        <div class="faded-content">
+            <h1 style="font-family: 'Press Start 2P', cursive; font-size: 24px; color: #2c3e50; opacity: 0.3;">
+                CHOOSE YOUR TYPE
+            </h1>
+        </div>
+    </div>
+
+    <!-- CAPTCHA Modal -->
+    <div class="captcha-modal" id="captcha-modal">
+
+        <!-- STAGE 1: Checkbox Only -->
+        <div class="captcha-stage" id="stage-checkbox">
+            <div class="captcha-header">
+                <h2>Confirm you are human</h2>
+            </div>
+
+            <div class="checkbox-container">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="robot-checkbox">
+                    <span class="checkbox-text">I am not a robot</span>
+                </label>
+
+                <div class="recaptcha-logo">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234285f4' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E"
+                        alt="reCAPTCHA">
+                    <div class="recaptcha-text">
+                        <div>reCAPTCHA</div>
+                        <div class="recaptcha-links">
+                            <a href="#" onclick="return false;">Privacy</a> •
+                            <a href="#" onclick="return false;">Terms</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 2: Simple Traffic Light CAPTCHA -->
+        <div class="captcha-stage hidden" id="stage-simple">
+            <div class="captcha-header">
+                <h2>Select the image with traffic lights</h2>
+            </div>
+
+            <div class="image-grid simple-grid" id="simple-grid">
+                <!-- Images will be inserted by JavaScript -->
+            </div>
+
+            <button class="verify-btn" id="simple-verify-btn">VERIFY</button>
+        </div>
+
+        <!-- STAGE 3: Custom CAPTCHA (Your Photos) -->
+        <div class="captcha-stage hidden" id="stage-custom">
+            <div class="captcha-header">
+                <h2>Select all images that contain the love of your life</h2>
+            </div>
+
+            <div class="image-grid custom-grid" id="custom-grid">
+                <!-- Images will be inserted by JavaScript -->
+            </div>
+
+            <div class="error-message hidden" id="error-message">
+                <!-- Error text will appear here -->
+            </div>
+
+            <button class="verify-btn" id="custom-verify-btn">VERIFY</button>
+        </div>
+
+    </div>
+
+    <script src="js/captcha.js"></script>
+</body>
+
+</html>

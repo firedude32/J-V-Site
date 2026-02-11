@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Placeholder Generator</title>
+</head>
+
+<body>
+    <h2>Right-click each image and "Save As" with the name shown below it</h2>
+    <div style="display: flex; gap: 20px; flex-wrap: wrap; padding: 20px;">
+        <div>
+            <canvas id="c1" width="80" height="80"></canvas>
+            <p>gym-guy.png</p>
+        </div>
+        <div>
+            <canvas id="c2" width="80" height="80"></canvas>
+            <p>debate-guy.png</p>
+        </div>
+        <div>
+            <canvas id="c3" width="80" height="80"></canvas>
+            <p>bookworm.png</p>
+        </div>
+        <div>
+            <canvas id="c4" width="80" height="80"></canvas>
+            <p>outdoorsman.png</p>
+        </div>
+        <div>
+            <canvas id="c5" width="80" height="80"></canvas>
+            <p>musician.png</p>
+        </div>
+        <div>
+            <canvas id="c6" width="80" height="80"></canvas>
+            <p>business-guy.png</p>
+        </div>
+        <div>
+            <canvas id="c7" width="80" height="80"></canvas>
+            <p>mysterious-guy.png</p>
+        </div>
+        <div>
+            <canvas id="c8" width="80" height="80"></canvas>
+            <p>it-guy.png (THE ONE)</p>
+        </div>
+    </div>
+    <script>
+        const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DFE6E9', '#6C5CE7', '#00B894'];
+        const canvases = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
+
+        canvases.forEach((id, i) => {
+            const canvas = document.getElementById(id);
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = colors[i];
+            ctx.fillRect(0, 0, 80, 80);
+            ctx.fillStyle = 'white';
+            ctx.font = '40px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText((i + 1), 40, 55);
+        });
+    </script>
+</body>
+
+</html>

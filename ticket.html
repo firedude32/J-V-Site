@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident #1030755 - iSupport</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/ticket.css">
+</head>
+
+<body>
+    <!-- Top Toolbar -->
+    <div class="toolbar">
+        <div class="toolbar-left">
+            <button class="toolbar-tab active">Incident</button>
+            <button class="toolbar-tab">New</button>
+            <button class="toolbar-tab">View</button>
+            <button class="toolbar-tab">Configuration</button>
+            <button class="toolbar-tab">View Tour</button>
+        </div>
+        <div class="toolbar-right">
+            <!-- Empty right section for balance, or add user info later -->
+        </div>
+    </div>
+
+    <!-- Action Buttons Bar -->
+    <div class="action-buttons-bar">
+        <div class="button-section">
+            <div class="button-group">
+                <button class="action-btn" disabled>
+                    <span class="btn-icon">💾</span>
+                    <span class="btn-text">Save</span>
+                </button>
+                <button class="action-btn" id="save-close-btn" disabled>
+                    <span class="btn-icon">💾</span>
+                    <span class="btn-text">Save And Close</span>
+                </button>
+                <button class="action-btn" disabled>
+                    <span class="btn-icon">🖨️</span>
+                    <span class="btn-text">Print</span>
+                </button>
+                <button class="action-btn" disabled>
+                    <span class="btn-icon">🗑️</span>
+                    <span class="btn-text">Delete</span>
+                </button>
+            </div>
+            <div class="section-label">File</div>
+        </div>
+        <div class="button-section">
+            <div class="section-label">Display</div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Left Sidebar - Customer Panel -->
+        <div class="sidebar">
+            <div class="customer-section">
+                <div class="section-title">Customer 🔍</div>
+
+                <div class="customer-card">
+                    <div class="customer-photo">
+                        <div class="photo-icon">👤</div>
+                    </div>
+                    <div class="customer-details">
+                        <div class="customer-name">Ethan K</div>
+                        <div class="customer-field">ethan.k@company.com</div>
+                        <div class="customer-field">x1337</div>
+                        <div class="customer-field">IT</div>
+                        <div class="customer-field">Admin</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ticket-counts-section">
+                <div class="section-title">Ticket Information</div>
+                <div class="count-badge badge-green">1 Open</div>
+                <div class="count-badge badge-gray">0 Closed</div>
+                <div class="count-badge badge-yellow">1 Suspended</div>
+                <div class="count-badge badge-red">0 Reopened</div>
+            </div>
+        </div>
+
+        <!-- Main Ticket Panel -->
+        <div class="ticket-panel">
+            <!-- Ticket Number Header -->
+            <div class="ticket-number-bar">
+                <span class="number-label">Number</span>
+                <span class="number-value">1030755</span>
+            </div>
+
+            <!-- Two Column Layout -->
+            <div class="fields-container">
+                <!-- Left Column -->
+                <div class="field-column">
+                    <div class="form-field">
+                        <label>Priority</label>
+                        <select disabled>
+                            <option>High</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Status <span class="required">*</span></label>
+                        <select id="status-dropdown">
+                            <option value="Open">Open</option>
+                            <option value="Closed">Closed</option>
+                            <option value="Suspended">Suspended</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Category</label>
+                        <input type="text" value="Help Desk Support <3" disabled>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Created By</label>
+                        <input type="text" value="Jacqueline Annis-Levings" disabled>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="field-column">
+                    <div class="form-field">
+                        <label>Assignee</label>
+                        <input type="text" value="Jacqueline Annis-Levings" disabled>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Created</label>
+                        <input type="text" value="2/14/2024 12:02 AM" disabled>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tab-bar">
+                <button class="tab-btn active">Issue</button>
+                <button class="tab-btn">History</button>
+                <button class="tab-btn">Assets</button>
+                <button class="tab-btn">Custom Fields</button>
+                <button class="tab-btn">Attachments</button>
+            </div>
+
+            <!-- Issue Content Area -->
+            <div class="content-area">
+                <div class="issue-field">
+                    <label class="field-label">Issue:</label>
+                    <div class="issue-display">
+                        IT help needed with choosing the best Valentine!
+                    </div>
+                </div>
+
+                <div class="resolution-field">
+                    <label class="field-label">Resolution: <span class="required">*</span></label>
+                    <textarea id="resolution-textarea" placeholder="Describe how this issue was resolved..."></textarea>
+                </div>
+
+                <!-- Update Button with validation message -->
+                <div class="bottom-actions">
+                    <button class="update-button" id="update-button" disabled>
+                        Update Ticket
+                    </button>
+                    <div class="validation-text" id="validation-text">
+                        Please set status to "Closed" and provide a resolution.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/ticket.js"></script>
+</body>
+
+</html>

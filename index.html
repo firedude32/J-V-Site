@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Surprise</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/countdown.css">
+</head>
+
+<body>
+    <!-- Countdown Container (shows if early) -->
+    <div id="countdown-container" class="hidden">
+        <div class="countdown-panel">
+            <h1>This page unlocks on Valentine's Day</h1>
+
+            <div class="countdown-display">
+                <div class="time-block">
+                    <div class="time-number" id="days">00</div>
+                    <div class="time-label">Days</div>
+                </div>
+                <div class="time-block">
+                    <div class="time-number" id="hours">00</div>
+                    <div class="time-label">Hours</div>
+                </div>
+                <div class="time-block">
+                    <div class="time-number" id="minutes">00</div>
+                    <div class="time-label">Minutes</div>
+                </div>
+                <div class="time-block">
+                    <div class="time-number" id="seconds">00</div>
+                    <div class="time-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading state (shows briefly while checking time) -->
+    <div id="loading-container">
+        <p>Loading...</p>
+    </div>
+
+    <script src="js/countdown.js"></script>
+</body>
+
+</html>

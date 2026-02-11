@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Type</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/character-select.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="character-select-container">
+        <!-- Title -->
+        <h1 class="pixel-title">CHOOSE YOUR TYPE</h1>
+
+        <!-- Character Display Area -->
+        <div class="character-row">
+            <!-- Left Arrow -->
+            <button class="arrow-btn" id="arrow-left" aria-label="Previous character">
+                <span>◀</span>
+            </button>
+
+            <!-- Characters Container -->
+            <div class="characters-container" id="characters-container">
+                <!-- Characters will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Right Arrow -->
+            <button class="arrow-btn" id="arrow-right" aria-label="Next character">
+                <span>▶</span>
+            </button>
+        </div>
+
+        <!-- Selected character display -->
+        <div class="selection-display">
+            Selected: <span id="selected-name">YOU: The IT Guy</span>
+        </div>
+
+        <!-- Select Button -->
+        <button class="select-btn" id="select-btn">SELECT</button>
+    </div>
+
+    <script src="js/character-select.js"></script>
+</body>
+
+</html>
