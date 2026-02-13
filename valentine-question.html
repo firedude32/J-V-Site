@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Important Question</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/valentine-question.css">
+</head>
+
+<body>
+    <!-- Background hearts -->
+    <div class="floating-hearts">
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+    </div>
+
+    <!-- Main question container -->
+    <div class="question-container">
+        <h1 class="question-title">Will you be my Valentine?</h1>
+
+        <div class="hearts-row">
+            <span class="heart-icon">❤️</span>
+            <span class="heart-icon">💕</span>
+            <span class="heart-icon">💝</span>
+        </div>
+
+        <div class="buttons-container" id="buttons-container">
+            <button class="no-button" id="no-button">No</button>
+            <button class="yes-button" id="yes-button">YES! ❤️</button>
+        </div>
+    </div>
+
+    <!-- Clippy watching from corner -->
+    <div class="clippy-watcher" id="clippy-watcher">
+        <canvas id="clippy-canvas" width="60" height="80"></canvas>
+        <div class="clippy-message" id="clippy-message"></div>
+    </div>
+
+    <!-- Heart explosion overlay -->
+    <div class="heart-explosion hidden" id="heart-explosion">
+        <div class="explosion-message">It's a date! 💕</div>
+        <div class="explosion-hearts" id="explosion-hearts"></div>
+    </div>
+
+    <script src="js/valentine-question.js"></script>
+</body>
+
+</html>

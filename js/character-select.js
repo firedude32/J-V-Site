@@ -154,17 +154,56 @@ document.addEventListener('keydown', (e) => {
 selectBtn.addEventListener('click', selectCharacter);
 
 function selectCharacter() {
-    // Store selection in localStorage (optional, for later use)
+    // Store selection in localStorage
     localStorage.setItem('selectedCharacter', JSON.stringify(characters[currentIndex]));
 
-    // Add a brief animation
-    selectBtn.textContent = 'SELECTED!';
-    selectBtn.style.background = '#f39c12';
+    // Instead of going directly to CAPTCHA, show Clippy notification
+    showClippyNotification();
+}
 
-    // Proceed to next page after short delay
-    setTimeout(() => {
-        window.location.href = 'captcha.html';
-    }, 800);
+function showClippyNotification() {
+    const clippyNotification = document.getElementById('clippy-notification');
+    const notificationBubble = document.getElementById('notification-bubble');
+
+    // Draw Clippy in notification
+    drawNotificationClippy();
+
+    // Show notification
+    clippyNotification.classList.remove('hidden');
+
+    // Click to go to valentine question page
+    clippyNotification.addEventListener('click', () => {
+        window.location.href = 'valentine-question.html';
+    });
+}
+
+function drawNotificationClippy() {
+    const canvas = document.getElementById('clippy-notification-canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Clippy body (paperclip shape)
+    ctx.fillStyle = '#FFD700';
+
+    // Outer curve
+    ctx.fillRect(25, 15, 8, 50);
+    ctx.fillRect(15, 15, 18, 8);
+    ctx.fillRect(15, 57, 18, 8);
+
+    // Inner curve
+    ctx.fillRect(8, 23, 8, 35);
+
+    // Eyes
+    ctx.fillStyle = '#000';
+    ctx.fillRect(28, 28, 3, 3);
+    ctx.fillRect(28, 45, 3, 3);
+
+    // Smile
+    ctx.fillRect(20, 52, 2, 2);
+    ctx.fillRect(22, 54, 2, 2);
+    ctx.fillRect(24, 55, 2, 2);
 }
 
 // Initialize on page load

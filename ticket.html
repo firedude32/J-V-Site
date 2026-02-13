@@ -10,159 +10,153 @@
 </head>
 
 <body>
-    <!-- Top Toolbar -->
-    <div class="toolbar">
-        <div class="toolbar-left">
-            <button class="toolbar-tab active">Incident</button>
-            <button class="toolbar-tab">New</button>
-            <button class="toolbar-tab">View</button>
-            <button class="toolbar-tab">Configuration</button>
-            <button class="toolbar-tab">View Tour</button>
-        </div>
-        <div class="toolbar-right">
-            <!-- Empty right section for balance, or add user info later -->
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+        <div class="nav-tabs">
+            <div class="nav-tab active">Incident</div>
+            <div class="nav-tab">New</div>
+            <div class="nav-tab">View</div>
+            <div class="nav-tab">Configuration</div>
+            <div class="nav-tab">View Tour</div>
         </div>
     </div>
 
-    <!-- Action Buttons Bar -->
-    <div class="action-buttons-bar">
-        <div class="button-section">
-            <div class="button-group">
-                <button class="action-btn" disabled>
-                    <span class="btn-icon">💾</span>
-                    <span class="btn-text">Save</span>
-                </button>
-                <button class="action-btn" id="save-close-btn" disabled>
-                    <span class="btn-icon">💾</span>
-                    <span class="btn-text">Save And Close</span>
-                </button>
-                <button class="action-btn" disabled>
-                    <span class="btn-icon">🖨️</span>
-                    <span class="btn-text">Print</span>
-                </button>
-                <button class="action-btn" disabled>
-                    <span class="btn-icon">🗑️</span>
-                    <span class="btn-text">Delete</span>
-                </button>
+    <!-- Action Bar -->
+    <div class="action-bar">
+        <div class="action-buttons">
+            <button class="action-button" disabled>
+                <div class="button-icon">💾</div>
+                <div class="button-label">Save</div>
+            </button>
+            <button class="action-button" disabled>
+                <div class="button-icon">💾</div>
+                <div class="button-label">Save And Close</div>
+            </button>
+            <button class="action-button" disabled>
+                <div class="button-icon">🖨️</div>
+                <div class="button-label">Print</div>
+            </button>
+            <button class="action-button" disabled>
+                <div class="button-icon">🗑️</div>
+                <div class="button-label">Delete</div>
+            </button>
+        </div>
+        <div class="action-bar-label">File</div>
+        <div class="action-bar-spacer"></div>
+        <div class="action-bar-label">Display</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-layout">
+        <!-- Left Sidebar -->
+        <div class="left-sidebar">
+            <div class="customer-header">
+                <span class="customer-title">Customer 🔍</span>
             </div>
-            <div class="section-label">File</div>
-        </div>
-        <div class="button-section">
-            <div class="section-label">Display</div>
-        </div>
-    </div>
 
-    <div class="main-container">
-        <!-- Left Sidebar - Customer Panel -->
-        <div class="sidebar">
-            <div class="customer-section">
-                <div class="section-title">Customer 🔍</div>
-
-                <div class="customer-card">
-                    <div class="customer-photo">
-                        <div class="photo-icon">👤</div>
-                    </div>
-                    <div class="customer-details">
-                        <div class="customer-name">Ethan K</div>
-                        <div class="customer-field">ethan.k@company.com</div>
-                        <div class="customer-field">x1337</div>
-                        <div class="customer-field">IT</div>
-                        <div class="customer-field">Admin</div>
-                    </div>
+            <div class="customer-card">
+                <div class="customer-avatar">
+                    <div class="avatar-icon">👤</div>
+                </div>
+                <div class="customer-info">
+                    <div class="customer-name">Ethan K</div>
+                    <div class="customer-detail">ethan.k@company.com</div>
+                    <div class="customer-detail">x1337</div>
+                    <div class="customer-detail">IT</div>
+                    <div class="customer-detail">Admin</div>
                 </div>
             </div>
 
-            <div class="ticket-counts-section">
+            <div class="ticket-info-section">
                 <div class="section-title">Ticket Information</div>
-                <div class="count-badge badge-green">1 Open</div>
-                <div class="count-badge badge-gray">0 Closed</div>
-                <div class="count-badge badge-yellow">1 Suspended</div>
-                <div class="count-badge badge-red">0 Reopened</div>
+                <div class="ticket-badge badge-open">1 Open</div>
+                <div class="ticket-badge badge-closed">0 Closed</div>
+                <div class="ticket-badge badge-suspended">1 Suspended</div>
+                <div class="ticket-badge badge-reopened">0 Reopened</div>
             </div>
         </div>
 
-        <!-- Main Ticket Panel -->
-        <div class="ticket-panel">
-            <!-- Ticket Number Header -->
-            <div class="ticket-number-bar">
-                <span class="number-label">Number</span>
-                <span class="number-value">1030755</span>
+        <!-- Right Content Area -->
+        <div class="right-content">
+            <!-- Ticket Header -->
+            <div class="ticket-header">
+                <span class="ticket-label">Number</span>
+                <span class="ticket-number">1030755</span>
             </div>
 
-            <!-- Two Column Layout -->
-            <div class="fields-container">
-                <!-- Left Column -->
-                <div class="field-column">
+            <!-- Form Fields -->
+            <div class="form-grid">
+                <div class="form-row">
                     <div class="form-field">
                         <label>Priority</label>
                         <select disabled>
                             <option>High</option>
                         </select>
                     </div>
+                    <div class="form-field">
+                        <label>Assignee</label>
+                        <input type="text" value="Jacqueline Annis-Levings" disabled>
+                    </div>
+                </div>
 
+                <div class="form-row">
                     <div class="form-field">
                         <label>Status <span class="required">*</span></label>
-                        <select id="status-dropdown">
+                        <select id="status-select">
                             <option value="Open">Open</option>
                             <option value="Closed">Closed</option>
                             <option value="Suspended">Suspended</option>
                         </select>
                     </div>
-
-                    <div class="form-field">
-                        <label>Category</label>
-                        <input type="text" value="Help Desk Support <3" disabled>
-                    </div>
-
-                    <div class="form-field">
-                        <label>Created By</label>
-                        <input type="text" value="Jacqueline Annis-Levings" disabled>
-                    </div>
-                </div>
-
-                <!-- Right Column -->
-                <div class="field-column">
-                    <div class="form-field">
-                        <label>Assignee</label>
-                        <input type="text" value="Jacqueline Annis-Levings" disabled>
-                    </div>
-
                     <div class="form-field">
                         <label>Created</label>
                         <input type="text" value="2/14/2024 12:02 AM" disabled>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field full-width">
+                        <label>Category</label>
+                        <input type="text" value="Help Desk Support <3" disabled>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field full-width">
+                        <label>Created By</label>
+                        <input type="text" value="Jacqueline Annis-Levings" disabled>
                     </div>
                 </div>
             </div>
 
             <!-- Tabs -->
             <div class="tab-bar">
-                <button class="tab-btn active">Issue</button>
-                <button class="tab-btn">History</button>
-                <button class="tab-btn">Assets</button>
-                <button class="tab-btn">Custom Fields</button>
-                <button class="tab-btn">Attachments</button>
+                <div class="tab active">Issue</div>
+                <div class="tab">History</div>
+                <div class="tab">Assets</div>
+                <div class="tab">Custom Fields</div>
+                <div class="tab">Attachments</div>
             </div>
 
-            <!-- Issue Content Area -->
-            <div class="content-area">
-                <div class="issue-field">
-                    <label class="field-label">Issue:</label>
-                    <div class="issue-display">
+            <!-- Issue Content -->
+            <div class="issue-content">
+                <div class="issue-section">
+                    <label class="issue-label">Issue:</label>
+                    <div class="issue-text">
                         IT help needed with choosing the best Valentine!
                     </div>
                 </div>
 
-                <div class="resolution-field">
-                    <label class="field-label">Resolution: <span class="required">*</span></label>
+                <div class="resolution-section">
+                    <label class="resolution-label">Resolution: <span class="required">*</span></label>
                     <textarea id="resolution-textarea" placeholder="Describe how this issue was resolved..."></textarea>
                 </div>
 
-                <!-- Update Button with validation message -->
-                <div class="bottom-actions">
+                <div class="submit-section">
                     <button class="update-button" id="update-button" disabled>
                         Update Ticket
                     </button>
-                    <div class="validation-text" id="validation-text">
+                    <div class="validation-message" id="validation-message">
                         Please set status to "Closed" and provide a resolution.
                     </div>
                 </div>
