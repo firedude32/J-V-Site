@@ -1,152 +1,106 @@
-// Character selection logic
+// Character Selection Logic - 5 Characters
 
-// Character data
+// Character data - THE RIGHT ANSWER is "The Goofy IT/EBA Kid"
 const characters = [
     {
         id: 1,
-        name: "The Gym Guy",
+        name: "Gym Bro",
         image: "assets/images/characters/gym-guy.png",
         recommended: false
     },
     {
         id: 2,
-        name: "The Debate Dude",
+        name: "The Debate Bro",
         image: "assets/images/characters/debate-guy.png",
         recommended: false
     },
     {
         id: 3,
-        name: "The Bookworm",
+        name: "Roman Life",
         image: "assets/images/characters/bookworm.png",
         recommended: false
     },
     {
         id: 4,
-        name: "YOU: The IT Guy",
+        name: "The Goofy IT/EBA Kid",
         image: "assets/images/characters/it-guy.png",
         recommended: true  // THE RIGHT ANSWER
     },
     {
         id: 5,
-        name: "The Outdoorsman",
+        name: "The Producer",
         image: "assets/images/characters/outdoorsman.png",
-        recommended: false
-    },
-    {
-        id: 6,
-        name: "The Musician",
-        image: "assets/images/characters/musician.png",
-        recommended: false
-    },
-    {
-        id: 7,
-        name: "The Business Guy",
-        image: "assets/images/characters/business-guy.png",
-        recommended: false
-    },
-    {
-        id: 8,
-        name: "The Mysterious Guy",
-        image: "assets/images/characters/mysterious-guy.png",
         recommended: false
     }
 ];
 
-// Current selection (start with "YOU: The IT Guy" at index 3)
-let currentIndex = 3;
+// Current selection index - START WITH FIRST CHARACTER
+let currentIndex = 0;
 
-// Get DOM elements
-const container = document.getElementById('characters-container');
-const leftArrow = document.getElementById('arrow-left');
-const rightArrow = document.getElementById('arrow-right');
+// DOM elements
+const characterGrid = document.getElementById('character-grid');
+const selectedNameSpan = document.getElementById('selected-name');
 const selectBtn = document.getElementById('select-btn');
-const selectedNameDisplay = document.getElementById('selected-name');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
 
-// Render all characters
+// Generate character cards
 function renderCharacters() {
-    container.innerHTML = '';
+    characterGrid.innerHTML = '';
 
-    characters.forEach((character, index) => {
+    characters.forEach((char, index) => {
         const card = document.createElement('div');
         card.className = 'character-card';
 
-        // Add selected class to current character
         if (index === currentIndex) {
             card.classList.add('selected');
         }
 
-        // Add recommended class to the IT Guy
-        if (character.recommended) {
+        if (char.recommended && index === currentIndex) {
             card.classList.add('recommended');
         }
 
         card.innerHTML = `
             <div class="character-image-container">
-                <img src="${character.image}" alt="${character.name}" class="character-image">
+                <img src="${char.image}" alt="${char.name}" class="character-image">
             </div>
-            <div class="character-name">${character.name}</div>
+            <div class="character-name">${char.name}</div>
         `;
 
-        // Click to select
         card.addEventListener('click', () => {
             currentIndex = index;
-            updateDisplay();
+            updateSelection();
         });
 
-        container.appendChild(card);
-    });
-
-    updateDisplay();
-}
-
-// Update the display when selection changes
-function updateDisplay() {
-    // Remove all selected classes
-    const cards = document.querySelectorAll('.character-card');
-    cards.forEach(card => card.classList.remove('selected'));
-
-    // Add selected class to current
-    cards[currentIndex].classList.add('selected');
-
-    // Update selected name display
-    selectedNameDisplay.textContent = characters[currentIndex].name;
-
-    // Scroll to center the selected character (smooth visual effect)
-    const selectedCard = cards[currentIndex];
-    const containerWidth = container.offsetWidth;
-    const cardWidth = selectedCard.offsetWidth;
-    const scrollPosition = selectedCard.offsetLeft - (containerWidth / 2) + (cardWidth / 2);
-
-    container.scrollTo({
-        left: scrollPosition,
-        behavior: 'smooth'
+        characterGrid.appendChild(card);
     });
 }
 
-// Navigate left
-function goLeft() {
+// Update selection display
+function updateSelection() {
+    renderCharacters();
+    selectedNameSpan.textContent = characters[currentIndex].name;
+}
+
+// Navigation buttons
+prevBtn.addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + characters.length) % characters.length;
-    updateDisplay();
-}
+    updateSelection();
+});
 
-// Navigate right
-function goRight() {
+nextBtn.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % characters.length;
-    updateDisplay();
-}
-
-// Event listeners
-leftArrow.addEventListener('click', goLeft);
-rightArrow.addEventListener('click', goRight);
+    updateSelection();
+});
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
-        goLeft();
+        prevBtn.click();
     } else if (e.key === 'ArrowRight') {
-        goRight();
+        nextBtn.click();
     } else if (e.key === 'Enter') {
-        selectCharacter();
+        selectBtn.click();
     }
 });
 
@@ -154,16 +108,50 @@ document.addEventListener('keydown', (e) => {
 selectBtn.addEventListener('click', selectCharacter);
 
 function selectCharacter() {
-    // Store selection in localStorage
-    localStorage.setItem('selectedCharacter', JSON.stringify(characters[currentIndex]));
+    const selectedChar = characters[currentIndex];
 
-    // Instead of going directly to CAPTCHA, show Clippy notification
-    showClippyNotification();
+    // Check if they selected the correct character
+    if (selectedChar.recommended) {
+        // CORRECT! Show Clippy notification
+        localStorage.setItem('selectedCharacter', JSON.stringify(selectedChar));
+        showClippyNotification();
+    } else {
+        // WRONG! Show error message
+        showWrongSelectionMessage(selectedChar.name);
+    }
+}
+
+function showWrongSelectionMessage(characterName) {
+    // Create error overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'wrong-selection-overlay';
+    overlay.innerHTML = `
+        <div class="wrong-selection-box">
+            <div class="wrong-selection-title">🤔 Hmm...</div>
+            <div class="wrong-selection-message">
+                Are you sure <strong>${characterName}</strong> is the right choice?
+            </div>
+            <div class="wrong-selection-hint">
+                Maybe try someone else? Look for the [recommended] tag!
+            </div>
+            <button class="wrong-selection-button" onclick="this.parentElement.parentElement.remove()">
+                Try Again
+            </button>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    // Auto-remove after clicking
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            overlay.remove();
+        }
+    });
 }
 
 function showClippyNotification() {
     const clippyNotification = document.getElementById('clippy-notification');
-    const notificationBubble = document.getElementById('notification-bubble');
 
     // Draw Clippy in notification
     drawNotificationClippy();
@@ -180,19 +168,68 @@ function showClippyNotification() {
 function drawNotificationClippy() {
     // Don't draw on canvas, we'll use an image instead
     const canvas = document.getElementById('clippy-notification-canvas');
-    canvas.style.display = 'none'; // Hide the canvas
+    if (canvas) {
+        canvas.style.display = 'none'; // Hide the canvas
+    }
 
-    // Create an img element
-    const img = document.createElement('img');
-    img.src = 'assets/images/clippy.png';
-    img.style.width = '60px';
-    img.style.height = '80px';
-    img.style.imageRendering = 'pixelated';
-
-    // Insert before the notification bubble
+    // Check if we already added the image
     const clippyNotification = document.getElementById('clippy-notification');
-    clippyNotification.insertBefore(img, clippyNotification.firstChild);
+    const existingImg = clippyNotification.querySelector('img.clippy-img');
+
+    if (!existingImg) {
+        // Create an img element
+        const img = document.createElement('img');
+        img.src = 'assets/images/clippy.png';
+        img.className = 'clippy-img';
+        img.style.width = '60px';
+        img.style.height = '80px';
+        img.style.imageRendering = 'pixelated';
+
+        // Insert before the notification bubble
+        clippyNotification.insertBefore(img, clippyNotification.firstChild);
+    }
 }
 
-// Initialize on page load
-window.addEventListener('DOMContentLoaded', renderCharacters);
+// Auto-generate placeholder images for characters
+function createPlaceholderImage(text, bgColor) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 80;
+    canvas.height = 80;
+    const ctx = canvas.getContext('2d');
+
+    // Background
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, 80, 80);
+
+    // Text
+    ctx.fillStyle = 'white';
+    ctx.font = 'bold 12px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    const lines = text.split('\n');
+    lines.forEach((line, i) => {
+        ctx.fillText(line, 40, 40 + (i - (lines.length - 1) / 2) * 15);
+    });
+
+    return canvas.toDataURL();
+}
+
+// Generate placeholders if images fail to load
+document.addEventListener('DOMContentLoaded', () => {
+    // Small delay to let images render first
+    setTimeout(() => {
+        const images = document.querySelectorAll('.character-image');
+
+        images.forEach((img, index) => {
+            img.addEventListener('error', () => {
+                const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#00B894', '#96CEB4'];
+                const labels = ['GYM\nBRO', 'DEBATE\nBRO', 'ROMAN\nLIFE', 'IT/EBA\nKID', 'PRODUCER'];
+                img.src = createPlaceholderImage(labels[index], colors[index]);
+            });
+        });
+    }, 100);
+});
+
+// Initialize
+updateSelection();
