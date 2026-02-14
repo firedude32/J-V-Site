@@ -1,9 +1,7 @@
 // Valentine's Day countdown logic
 
 // Set the target date: February 14, 2026 at midnight
-// const valentinesDay = new Date('2026-02-14T00:00:00').getTime();
-// TEST VERSION - Unlocks in 2 minutes
-const valentinesDay = new Date(Date.now() + 60 * 100).getTime();
+const valentinesDay = new Date('2026-02-14T00:00:00').getTime();
 
 // Get the current time
 function checkAndStartCountdown() {
