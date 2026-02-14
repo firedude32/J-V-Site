@@ -1,4 +1,4 @@
-/* Valentine Question Page - Improved Version */
+/* Valentine Question Page - Clean Version */
 
 body {
     background: linear-gradient(135deg, #ffd1dc 0%, #ffb6c8 50%, #ffa6ba 100%);
@@ -8,6 +8,8 @@ body {
     align-items: center;
     overflow: hidden;
     position: relative;
+    margin: 0;
+    padding: 20px;
 }
 
 /* Floating background hearts */
@@ -83,20 +85,20 @@ body {
     }
 }
 
-/* Main question container */
-.question-container {
-    background: white;
-    border-radius: 24px;
-    padding: 60px 80px;
-    box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
-    text-align: center;
-    position: relative;
+/* Page wrapper - contains photo and question box */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
     z-index: 10;
     max-width: 650px;
+    width: 100%;
 }
 
+/* Your photo at the top */
 .question-photo {
-    margin-bottom: 30px;
+    text-align: center;
 }
 
 .question-photo img {
@@ -104,8 +106,31 @@ body {
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #e91e63;
-    box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+    border: 5px solid white;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.5);
+    animation: fadeInScale 0.6s ease-out;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Main question container (white box) */
+.question-container {
+    background: white;
+    border-radius: 24px;
+    padding: 50px 60px;
+    box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+    text-align: center;
+    width: 100%;
 }
 
 .question-title {
@@ -150,14 +175,13 @@ body {
     }
 }
 
-/* Buttons container */
+/* Buttons container - fixed layout */
 .buttons-container {
     display: flex;
     justify-content: center;
-    gap: 35px;
-    min-height: 100px;
     align-items: center;
-    position: relative;
+    gap: 30px;
+    min-height: 80px;
 }
 
 /* YES button - grows over time */
@@ -355,13 +379,21 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .page-wrapper {
+        gap: 20px;
+    }
+
+    .question-photo img {
+        width: 120px;
+        height: 120px;
+    }
+
     .question-container {
-        padding: 40px 30px;
-        max-width: 90%;
+        padding: 35px 25px;
     }
 
     .question-title {
-        font-size: 36px;
+        font-size: 32px;
     }
 
     .yes-button,
@@ -372,6 +404,7 @@ body {
 
     .hearts-row {
         gap: 20px;
+        margin-bottom: 35px;
     }
 
     .heart-icon {
@@ -381,5 +414,9 @@ body {
     .clippy-watcher {
         bottom: 15px;
         right: 15px;
+    }
+
+    .explosion-message {
+        font-size: 48px;
     }
 }

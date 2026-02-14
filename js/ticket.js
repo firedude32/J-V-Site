@@ -2,7 +2,7 @@
 
 // Initialize EmailJS
 (function () {
-    emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to get this from EmailJS dashboard
+    emailjs.init("7eDxZwQol7bD0VUa6"); // You'll need to get this from EmailJS dashboard
 })();
 
 // Get DOM elements

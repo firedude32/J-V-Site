@@ -33,29 +33,22 @@ const clippyMessages = [
 
 // Draw Clippy
 function drawClippy() {
+    // Don't draw on canvas, use image instead
     const canvas = document.getElementById('clippy-canvas');
-    const ctx = canvas.getContext('2d');
+    canvas.style.display = 'none'; // Hide canvas
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Create img element
+    const img = document.createElement('img');
+    img.src = 'assets/images/clippy.png';
+    img.style.width = '60px';
+    img.style.height = '80px';
+    img.style.imageRendering = 'pixelated';
+    img.id = 'clippy-img';
 
-    // Clippy body
-    ctx.fillStyle = '#FFD700';
-    ctx.fillRect(25, 15, 8, 50);
-    ctx.fillRect(15, 15, 18, 8);
-    ctx.fillRect(15, 57, 18, 8);
-    ctx.fillRect(8, 23, 8, 35);
-
-    // Eyes
-    ctx.fillStyle = '#000';
-    ctx.fillRect(28, 28, 3, 3);
-    ctx.fillRect(28, 45, 3, 3);
-
-    // Smile
-    ctx.fillRect(20, 52, 2, 2);
-    ctx.fillRect(22, 54, 2, 2);
-    ctx.fillRect(24, 55, 2, 2);
+    // Replace canvas with image
+    const clippyWatcher = document.getElementById('clippy-watcher');
+    clippyWatcher.insertBefore(img, canvas);
 }
-
 drawClippy();
 
 // Calculate distance between two points

@@ -178,32 +178,20 @@ function showClippyNotification() {
 }
 
 function drawNotificationClippy() {
+    // Don't draw on canvas, we'll use an image instead
     const canvas = document.getElementById('clippy-notification-canvas');
-    const ctx = canvas.getContext('2d');
+    canvas.style.display = 'none'; // Hide the canvas
 
-    // Clear canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Create an img element
+    const img = document.createElement('img');
+    img.src = 'assets/images/clippy.png';
+    img.style.width = '60px';
+    img.style.height = '80px';
+    img.style.imageRendering = 'pixelated';
 
-    // Clippy body (paperclip shape)
-    ctx.fillStyle = '#FFD700';
-
-    // Outer curve
-    ctx.fillRect(25, 15, 8, 50);
-    ctx.fillRect(15, 15, 18, 8);
-    ctx.fillRect(15, 57, 18, 8);
-
-    // Inner curve
-    ctx.fillRect(8, 23, 8, 35);
-
-    // Eyes
-    ctx.fillStyle = '#000';
-    ctx.fillRect(28, 28, 3, 3);
-    ctx.fillRect(28, 45, 3, 3);
-
-    // Smile
-    ctx.fillRect(20, 52, 2, 2);
-    ctx.fillRect(22, 54, 2, 2);
-    ctx.fillRect(24, 55, 2, 2);
+    // Insert before the notification bubble
+    const clippyNotification = document.getElementById('clippy-notification');
+    clippyNotification.insertBefore(img, clippyNotification.firstChild);
 }
 
 // Initialize on page load
