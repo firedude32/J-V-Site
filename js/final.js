@@ -1,7 +1,7 @@
 // Final Page Logic
 
 // ===== COUNTDOWN TO DATE =====
-const dateTime = new Date('2026-02-14T19:00:00').getTime(); // 7:00 PM on Feb 14
+const dateTime = new Date('2026-02-14T19:30:00').getTime(); // 7:30 PM on Feb 14
 
 function updateFinalCountdown() {
     const now = new Date().getTime();

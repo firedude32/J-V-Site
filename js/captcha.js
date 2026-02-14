@@ -15,55 +15,28 @@ const simpleVerifyBtn = document.getElementById('simple-verify-btn');
 const customVerifyBtn = document.getElementById('custom-verify-btn');
 const errorMessage = document.getElementById('error-message');
 
-// ===== AUTO-GENERATE PLACEHOLDER IMAGES =====
 
-// Function to create a colored placeholder canvas
-function createPlaceholder(text, bgColor, textColor = 'white') {
-    const canvas = document.createElement('canvas');
-    canvas.width = 150;
-    canvas.height = 150;
-    const ctx = canvas.getContext('2d');
-
-    // Background
-    ctx.fillStyle = bgColor;
-    ctx.fillRect(0, 0, 150, 150);
-
-    // Text
-    ctx.fillStyle = textColor;
-    ctx.font = 'bold 20px Arial';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-
-    // Split text into lines if needed
-    const lines = text.split('\n');
-    lines.forEach((line, i) => {
-        ctx.fillText(line, 75, 75 + (i - (lines.length - 1) / 2) * 25);
-    });
-
-    return canvas.toDataURL();
-}
-
-// Simple CAPTCHA data (traffic lights) - AUTO-GENERATED
+// Simple CAPTCHA data (traffic lights) 
 const simpleImages = [
-    { src: createPlaceholder('TRAFFIC\nLIGHT\n✓', '#2ecc71'), correct: true },
-    { src: createPlaceholder('ROAD', '#e74c3c'), correct: false },
-    { src: createPlaceholder('BUILDING', '#e67e22'), correct: false }
+    { src: 'assets/images/captcha/traffic-light-1.jpg', correct: true },
+    { src: 'assets/images/captcha/traffic-light-2.jpg', correct: false },
+    { src: 'assets/images/captcha/traffic-light-3.jpg', correct: false }
 ];
 
-// Custom CAPTCHA data (your photos + decoys) - AUTO-GENERATED
+// Custom CAPTCHA data (your photos + decoys)
 const customImages = [
-    { src: createPlaceholder('YOU\nPhoto 1', '#3498db'), correct: true },
-    { src: createPlaceholder('BUS', '#95a5a6'), correct: false },
-    { src: createPlaceholder('YOU\nPhoto 2', '#3498db'), correct: true },
-    { src: createPlaceholder('YOU\nPhoto 3', '#3498db'), correct: true },
-    { src: createPlaceholder('DOG\n🐕', '#f39c12'), correct: false },
-    { src: createPlaceholder('YOU\nPhoto 4', '#3498db'), correct: true },
-    { src: createPlaceholder('YOU\nPhoto 5', '#3498db'), correct: true },
-    { src: createPlaceholder('COFFEE\n☕', '#8e44ad'), correct: false },
-    { src: createPlaceholder('YOU\nPhoto 6', '#3498db'), correct: true },
-    { src: createPlaceholder('YOU\nPhoto 7', '#3498db'), correct: true },
-    { src: createPlaceholder('KEYBOARD\n⌨️', '#34495e'), correct: false },
-    { src: createPlaceholder('YOU\nPhoto 8', '#3498db'), correct: true }
+    { src: 'assets/images/captcha/you-1.jpg', correct: true },
+    { src: 'assets/images/captcha/decoy-bus.jpg', correct: false },
+    { src: 'assets/images/captcha/you-2.jpg', correct: true },
+    { src: 'assets/images/captcha/you-3.jpg', correct: true },
+    { src: 'assets/images/captcha/decoy-dog.jpg', correct: false },
+    { src: 'assets/images/captcha/you-4.jpg', correct: true },
+    { src: 'assets/images/captcha/you-5.jpg', correct: true },
+    { src: 'assets/images/captcha/decoy-coffee.jpg', correct: false },
+    { src: 'assets/images/captcha/you-6.jpg', correct: true },
+    { src: 'assets/images/captcha/you-7.jpg', correct: true },
+    { src: 'assets/images/captcha/decoy-keyboard.jpg', correct: false },
+    { src: 'assets/images/captcha/you-8.jpg', correct: true }
 ];
 
 // Track selected images

@@ -352,10 +352,31 @@ canvas {
         font-size: 11px;
     }
 
-    .characters {
-        flex-direction: column;
-        gap: 30px;
-        align-items: center;
+    /* Single centered photo */
+    .final-photo-section {
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .couple-photo {
+        max-width: 400px;
+        width: 90%;
+        border-radius: 20px;
+        border: 5px solid #ff69b4;
+        box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+        animation: fadeInScale 1s ease-out;
+    }
+
+    @keyframes fadeInScale {
+        0% {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 
     .character-container.left,

@@ -95,6 +95,19 @@ body {
     max-width: 650px;
 }
 
+.question-photo {
+    margin-bottom: 30px;
+}
+
+.question-photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #e91e63;
+    box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+}
+
 .question-title {
     font-size: 48px;
     color: #e91e63;

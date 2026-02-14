@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Test</title>
+    <style>
+        body {
+            padding: 40px;
+            font-family: Arial;
+        }
+
+        .test-item {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 4px;
+        }
+
+        img {
+            max-width: 150px;
+            border: 2px solid #ccc;
+        }
+
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Image Loading Test</h1>
+
+    <div class="test-item">
+        <h3>Notification Photo</h3>
+        <img src="assets/images/your-photo.jpg"
+            onerror="this.parentElement.innerHTML += '<p class=error>❌ FAILED TO LOAD</p>'"
+            onload="this.parentElement.innerHTML += '<p class=success>✅ LOADED</p>'">
+    </div>
+
+    <div class="test-item">
+        <h3>CAPTCHA Photo 1</h3>
+        <img src="assets/images/captcha/you-1.jpg"
+            onerror="this.parentElement.innerHTML += '<p class=error>❌ FAILED TO LOAD</p>'"
+            onload="this.parentElement.innerHTML += '<p class=success>✅ LOADED</p>'">
+    </div>
+
+    <div class="test-item">
+        <h3>CAPTCHA Photo 2</h3>
+        <img src="assets/images/captcha/you-2.jpg"
+            onerror="this.parentElement.innerHTML += '<p class=error>❌ FAILED TO LOAD</p>'"
+            onload="this.parentElement.innerHTML += '<p class=success>✅ LOADED</p>'">
+    </div>
+
+    <div class="test-item">
+        <h3>Decoy Bus</h3>
+        <img src="assets/images/captcha/decoy-bus.jpg"
+            onerror="this.parentElement.innerHTML += '<p class=error>❌ FAILED TO LOAD</p>'"
+            onload="this.parentElement.innerHTML += '<p class=success>✅ LOADED</p>'">
+    </div>
+</body>
+
+</html>

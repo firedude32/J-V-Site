@@ -56,14 +56,14 @@
 
             <div class="customer-card">
                 <div class="customer-avatar">
-                    <div class="avatar-icon">👤</div>
+                    <img src="assets/images/ethan-ticket.jpg" alt="Ethan F" class="avatar-photo">
                 </div>
                 <div class="customer-info">
-                    <div class="customer-name">Ethan K</div>
-                    <div class="customer-detail">ethan.k@company.com</div>
+                    <div class="customer-name">Ethan Forsyth</div>
+                    <div class="customer-detail">ecforsyth957@students.phc.edu</div>
                     <div class="customer-detail">x1337</div>
                     <div class="customer-detail">IT</div>
-                    <div class="customer-detail">Admin</div>
+                    <div class="customer-detail">Tech II</div>
                 </div>
             </div>
 
@@ -117,14 +117,14 @@
                 <div class="form-row">
                     <div class="form-field full-width">
                         <label>Category</label>
-                        <input type="text" value="Help Desk Support <3" disabled>
+                        <input type="text" value="Help Desk Morale Booster <3" disabled>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-field full-width">
                         <label>Created By</label>
-                        <input type="text" value="Jacqueline Annis-Levings" disabled>
+                        <input type="text" value="Noah Ridge" disabled>
                     </div>
                 </div>
             </div>
@@ -143,12 +143,13 @@
                 <div class="issue-section">
                     <label class="issue-label">Issue:</label>
                     <div class="issue-text">
-                        IT help needed with choosing the best Valentine!
+                        Find Ethan a date for Valentine's Day
                     </div>
                 </div>
 
                 <div class="resolution-section">
-                    <label class="resolution-label">Resolution: <span class="required">*</span></label>
+                    <label class="resolution-label">Resolution: <span class="required">*</span> <span
+                            class="email-note">(will be sent to Ethan)</span></label>
                     <textarea id="resolution-textarea" placeholder="Describe how this issue was resolved..."></textarea>
                 </div>
 
@@ -164,6 +165,8 @@
         </div>
     </div>
 
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="js/ticket.js"></script>
 </body>
 
